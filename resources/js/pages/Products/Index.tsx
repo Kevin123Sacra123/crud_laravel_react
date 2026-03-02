@@ -1,0 +1,105 @@
+import { Button } from '@/components/ui/button';
+import AppLayout from '@/layouts/app-layout';
+import { type BreadcrumbItem } from '@/types';
+import { Head,Link , usePage,useForm } from '@inertiajs/react';
+
+import {
+  Alert,
+  AlertDescription,
+  AlertTitle,
+} from "@/components/ui/alert"
+
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table"
+
+
+import { Megaphone } from 'lucide-react';
+
+const breadcrumbs: BreadcrumbItem[] = [
+    {
+        title: 'Products',
+        href: '/products',
+    },
+];
+
+interface Product{
+    id: number;
+    nombre: string;
+    precio: number;
+    descripcion: string;
+}
+
+interface PageProps {
+    flash: {
+        message?: string
+    }
+    products: Product[];
+}
+
+export default function Index() {
+    const {products, flash } = usePage().props as PageProps;
+
+    const {processing, delete:destroy} = useForm();
+
+    const handleDelete = (id:number, nombre: string) => {
+        if(confirm('¿Seguro que quieres eliminar el producto? ' + nombre)) {
+            destroy(route("products.destroy", id));
+        }
+    }
+
+    return (
+        <AppLayout breadcrumbs={breadcrumbs}>
+            <Head title="Products" />
+            <div className='m-4'>
+                <Link href={route('products.create')}><Button>crear un producto</Button></Link>
+            </div>
+            <div className='m-4'>
+                <div>
+                    {flash.message && (
+                        <Alert>
+                            <Megaphone className='h-4 w-4'></Megaphone>
+                            <AlertTitle>Notificación</AlertTitle>
+                            <AlertDescription>{flash.message}</AlertDescription>
+                        </Alert>
+                    )}
+                </div>
+            </div>
+            {products.length > 0 &&(
+                <Table>
+                    <TableCaption>lista de productos</TableCaption>
+                    <TableHeader>
+                        <TableRow>
+                        <TableHead className="w-[100px]">ID</TableHead>
+                        <TableHead>Nombre</TableHead>
+                        <TableHead>Precio</TableHead>
+                        <TableHead className="text-right">Descripcion</TableHead>
+                        <TableHead className="text-right">Acciones</TableHead>
+                        </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                        {products.map((product) => (
+                        <TableRow>
+                            <TableCell className="font-medium">{product.id}</TableCell>
+                            <TableCell>{product.nombre}</TableCell>
+                            <TableCell>{product.precio}</TableCell> 
+                            <TableCell>{product.descripcion}</TableCell>
+                            <TableCell className='text-center'>
+                                <Link href={route('products.edit', product.id)}><Button className='bg-slate-600 hover:bg-slate-700'>Editar</Button></Link>
+                                <Button disabled={processing} onClick={() => handleDelete(product.id, product.nombre)} className='bg-red-500 hover:bg-red-700'>Eliminar</Button>
+                            </TableCell>
+                        </TableRow>
+                        ))}
+                    </TableBody>
+                </Table>
+
+            )}
+        </AppLayout>
+    );
+}
