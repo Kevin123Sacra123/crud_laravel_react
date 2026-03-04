@@ -34,7 +34,7 @@ export default function Edit({product} : Props) {
         precio: product.precio,
         descripcion: product.descripcion
     });
- 
+
     const handUpdate = (e: React.FormEvent) => {
         e.preventDefault();
         put(route('products.update', product.id));

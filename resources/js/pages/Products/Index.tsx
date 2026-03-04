@@ -19,12 +19,16 @@ import {
   TableRow,
 } from "@/components/ui/table"
 
-
-import { Megaphone } from 'lucide-react';
+import { Megaphone, Trash , PencilLine } from 'lucide-react';
+import { dashboard } from '@/routes';       
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
-        title: 'Products',
+        title: 'administrador',
+        href: '/dashboard',
+    },
+    {
+        title: 'Productos',
         href: '/products',
     },
 ];
@@ -49,8 +53,8 @@ export default function Index() {
     const {processing, delete:destroy} = useForm();
 
     const handleDelete = (id:number, nombre: string) => {
-        if(confirm('¿Seguro que quieres eliminar el producto? ' + nombre)) {
-            destroy(route("products.destroy", id));
+        if(confirm('¿Seguro que quieres eliminar el producto? \n' + nombre)) {
+            destroy(route('products.destroy', id));
         }
     }
 
@@ -71,16 +75,17 @@ export default function Index() {
                     )}
                 </div>
             </div>
+            <h1 className='text-center py-5'>Lista de productos</h1>
             {products.length > 0 &&(
                 <Table>
-                    <TableCaption>lista de productos</TableCaption>
+                    <TableCaption></TableCaption>
                     <TableHeader>
                         <TableRow>
                         <TableHead className="w-[100px]">ID</TableHead>
                         <TableHead>Nombre</TableHead>
                         <TableHead>Precio</TableHead>
-                        <TableHead className="text-right">Descripcion</TableHead>
-                        <TableHead className="text-right">Acciones</TableHead>
+                        <TableHead className="text-left">Descripcion</TableHead>
+                        <TableHead className="text-center">Acciones</TableHead>
                         </TableRow>
                     </TableHeader>
                     <TableBody>
@@ -90,9 +95,9 @@ export default function Index() {
                             <TableCell>{product.nombre}</TableCell>
                             <TableCell>{product.precio}</TableCell> 
                             <TableCell>{product.descripcion}</TableCell>
-                            <TableCell className='text-center'>
-                                <Link href={route('products.edit', product.id)}><Button className='bg-slate-600 hover:bg-slate-700'>Editar</Button></Link>
-                                <Button disabled={processing} onClick={() => handleDelete(product.id, product.nombre)} className='bg-red-500 hover:bg-red-700'>Eliminar</Button>
+                            <TableCell className='flex gap-3.5 justify-center items-center'>
+                                <Link href={route('products.edit', product.id)}><Button className='bg-slate-600 hover:bg-slate-700'> <PencilLine/> </Button></Link>
+                                <Button disabled={processing} onClick={() => handleDelete(product.id, product.nombre)} className='bg-red-500 hover:bg-red-700'> <Trash/> </Button>
                             </TableCell>
                         </TableRow>
                         ))}
@@ -100,6 +105,7 @@ export default function Index() {
                 </Table>
 
             )}
+        
         </AppLayout>
     );
 }

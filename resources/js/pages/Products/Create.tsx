@@ -68,6 +68,10 @@ export default function Index() {
                         < Textarea  placeholder='Descripcion del producto' value={data.descripcion} onChange={(e) => setData('descripcion', e.target.value)} />
                     </div>
                     <Button type='submit'>Añadir producto</Button>
+                    <Link href={route('products.index')} className="ml-2">  
+                        <Button >Cancelar</Button>
+                    </Link>
+
                 </form>
             </div>
         </AppLayout>
