@@ -16,6 +16,7 @@ export default defineConfig({
                 plugins: ['babel-plugin-react-compiler'],
             },
         }),
+        
         tailwindcss(),
         wayfinder({
             formVariants: true,
@@ -23,5 +24,8 @@ export default defineConfig({
     ],
     esbuild: {
         jsx: 'automatic',
+    },
+    server: {
+        https: true,
     },
 });
