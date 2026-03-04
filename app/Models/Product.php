@@ -10,5 +10,6 @@ class Product extends Model
         'nombre',
         'precio',
         'descripcion',
+        
     ];
 }
