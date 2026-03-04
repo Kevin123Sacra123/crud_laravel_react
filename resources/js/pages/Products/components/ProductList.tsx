@@ -8,6 +8,19 @@ import {
   TableRow,
 } from "@/components/ui/table"
 
+interface Product{
+    id: number;
+    nombre: string;
+    precio: number;
+    descripcion: string;
+}
+
+interface PageProps {
+    flash: {
+        message?: string
+    }
+    products: Product[];
+}
 
 export default function ProductList({ items}){
     return (

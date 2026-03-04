@@ -1,6 +1,4 @@
-import { Link } from '@inertiajs/react';
-import { BookOpen, FolderGit2, LayoutGrid, PackageSearchIcon } from 'lucide-react';
-import AppLogo from '@/components/app-logo';
+import { BookOpen, FolderGit2, PackageSearchIcon } from 'lucide-react';
 import { NavFooter } from '@/components/nav-footer';
 import { NavMain } from '@/components/nav-main';
 import { NavUser } from '@/components/nav-user';
@@ -10,16 +8,14 @@ import {
     SidebarFooter,
     SidebarHeader,
     SidebarMenu,
-    SidebarMenuButton,
     SidebarMenuItem,
 } from '@/components/ui/sidebar';
-import { dashboard } from '@/routes';
 import type { NavItem } from '@/types';
 
 const mainNavItems: NavItem[] = [
     {
         title: 'Administrador',
-        href: dashboard(),
+        href: '/products/dashboard',
         icon: BookOpen, 
     },
     {

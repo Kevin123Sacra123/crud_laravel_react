@@ -18,7 +18,7 @@ class ProductController extends Controller
     public function dashboard()
     {
         $products = Product::all();
-        return Inertia::render('Dashboard', compact('products'));
+        return Inertia::render('Products/Dashboard', compact('products'));
     }
 
     public function create(){

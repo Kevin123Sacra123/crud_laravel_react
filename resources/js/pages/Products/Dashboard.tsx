@@ -1,26 +1,41 @@
-import { Head ,Link , usePage, useForm } from '@inertiajs/react';
-import { PlaceholderPattern } from '@/components/ui/placeholder-pattern';
+import { Head , usePage } from '@inertiajs/react';
 import AppLayout from '@/layouts/app-layout';
 import type { BreadcrumbItem } from '@/types';
 import { NativeSelect, NativeSelectOption } from "@/components/ui/native-select"
 import { useState } from "react";
-import ProductList from './Products/components/ProductList';
+import ProductList from './components/ProductList';
 import { Input } from '@/components/ui/input';
-import {products} from './Products/data/products';
+//import {products} from './data/products';
 
 const breadcrumbs: BreadcrumbItem[] = [
   {
     title: 'Administrador',
-    href: '/dashboard',
+    href: '/products/dashboard',
   },  
   {
     title: 'Productos',
     href: '/products',
   },
-
 ];
 
+interface Product{
+    id: number;
+    nombre: string;
+    precio: number;
+    descripcion: string;
+}
+
+interface PageProps {
+    flash: {
+        message?: string
+    }
+    products: Product[];
+}
+
 export default function Dashboard() {
+
+  const {products, flash } = usePage().props as PageProps;
+
   const [min, setMin] = useState("");
   const [max, setMax] = useState("");
   const [search, setSearch] = useState("");
@@ -64,7 +79,6 @@ export default function Dashboard() {
     return "#f44336";
 
   };
-
 
   return (
     <AppLayout breadcrumbs={breadcrumbs}>

@@ -1,7 +1,6 @@
 import { Button } from '@/components/ui/button';
 import AppLayout from '@/layouts/app-layout';
-import { type BreadcrumbItem } from '@/types';
-import { Form, Head, Link , useForm} from '@inertiajs/react';                                                                              
+import { Head , useForm} from '@inertiajs/react';                                                                              
 
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
@@ -14,7 +13,6 @@ import {
   AlertTitle,
 } from "@/components/ui/alert"
 import { Terminal } from 'lucide-react';
-import { Props } from 'node_modules/@headlessui/react/dist/types';
 
 interface Product{
     id: number;

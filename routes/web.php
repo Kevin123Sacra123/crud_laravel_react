@@ -13,6 +13,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         return Inertia::render('dashboard');
     })->name('dashboard');
     Route::get('/products', [ProductController::class, 'index'])->name('products.index');
+    Route::get('/products/dashboard', [ProductController::class, 'dashboard'])->name('products.dashboard');
     Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
     Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->name('products.edit');
     Route::put('/products/{product}', [ProductController::class, 'update'])->name('products.update');

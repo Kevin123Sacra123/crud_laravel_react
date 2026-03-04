@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "56a22f718b6d7f5713f1e3effcfa9140",
+    "content-hash": "a817a277f1dabe684c37f69ccfba54f6",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -6388,6 +6388,61 @@
                 "source": "https://github.com/tijsverkoyen/CssToInlineStyles/tree/v2.4.0"
             },
             "time": "2025-12-02T11:56:42+00:00"
+        },
+        {
+            "name": "veltix/wayfinder-locales",
+            "version": "v0.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/veltix/wayfinder-locales.git",
+                "reference": "3783418d88fc9759a7522ea4410ddbfbadc91758"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/veltix/wayfinder-locales/zipball/3783418d88fc9759a7522ea4410ddbfbadc91758",
+                "reference": "3783418d88fc9759a7522ea4410ddbfbadc91758",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/routing": "^12.0",
+                "illuminate/support": "^12.0",
+                "laravel/wayfinder": "^0.1",
+                "php": "^8.2"
+            },
+            "require-dev": {
+                "laravel/pint": "^1.21",
+                "orchestra/testbench": "^10.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Veltix\\WayfinderLocales\\Providers\\LocalizedRoutesServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Veltix\\WayfinderLocales\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Locale-aware route generation extension for Laravel Wayfinder.",
+            "keywords": [
+                "i18n",
+                "laravel",
+                "routes",
+                "typescript",
+                "wayfinder"
+            ],
+            "support": {
+                "issues": "https://github.com/veltix/wayfinder-locales/issues",
+                "source": "https://github.com/veltix/wayfinder-locales/tree/v0.0.1"
+            },
+            "time": "2026-02-10T22:31:43+00:00"
         },
         {
             "name": "vlucas/phpdotenv",

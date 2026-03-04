@@ -18,14 +18,12 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
-
-import { Megaphone, Trash , PencilLine } from 'lucide-react';
-import { dashboard } from '@/routes';       
+import { Megaphone, Trash , PencilLine } from 'lucide-react';      
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
         title: 'administrador',
-        href: '/dashboard',
+        href: '/products/dashboard',
     },
     {
         title: 'Productos',
