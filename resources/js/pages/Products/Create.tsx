@@ -7,7 +7,10 @@ import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Textarea } from "@/components/ui/textarea";
 import React from 'react';
-
+import {
+  NativeSelect,
+  NativeSelectOption,
+} from "@/components/ui/native-select"
 import {
   Alert,
   AlertDescription,
@@ -27,7 +30,10 @@ export default function Index() {
     const {data, setData, post, errors} = useForm({
         nombre: '',
         precio: '',
-        descripcion: ''
+        sales: '',
+        stock: '',
+        categorias: '',
+        descripcion: '',
     });
 
     const handSubmit = (e: React.FormEvent) => {
@@ -62,6 +68,27 @@ export default function Index() {
                     <div className='gap-1.5'>
                         <Label htmlFor="precio">Precio</Label>
                         <Input name="precio" placeholder='Precio' value={data.precio} onChange={(e) => setData('precio', e.target.value)} />
+                    </div>
+                    
+                    <div className='gap-1.5'>
+                        <Label htmlFor="categorias">Categorias</Label>
+                        <NativeSelect  value={data.categorias} onChange={(e) => setData('categorias', e.target.value)} >
+                            <NativeSelectOption value="null">Selecciona una categoria</NativeSelectOption>
+                            <NativeSelectOption value="Electronicos">Electrónicos</NativeSelectOption>
+                            <NativeSelectOption value="Accesorios">Accesorios</NativeSelectOption>
+                            <NativeSelectOption value="Audio">Audio</NativeSelectOption>
+                            <NativeSelectOption value="Componentes">Componentes</NativeSelectOption>    
+                        </NativeSelect>
+                        <Input type='hidden' name="categorias" placeholder='Categorias' />
+                    </div>
+
+                    <div className='gap-1.5'>
+                        <Label htmlFor="sales">Ventas</Label>
+                        <Input type='number' name="sales" placeholder='Ventas' value={data.sales} onChange={(e) => setData('sales', e.target.value)} />
+                    </div>
+                    <div className='gap-1.5'>
+                        <Label htmlFor="stock">Stock</Label>
+                        <Input type='number' name="stock" placeholder='Stock' value={data.stock} onChange={(e) => setData('stock', e.target.value)} />
                     </div>
                     <div className='gap-1.5'>
                         <Label htmlFor="producto_descripcion">Descripcion</Label>

@@ -5,7 +5,12 @@ import { NativeSelect, NativeSelectOption } from "@/components/ui/native-select"
 import { useState } from "react";
 import ProductList from './components/ProductList';
 import { Input } from '@/components/ui/input';
-//import {products} from './data/products';
+import LineSalesChart from './components/LineSalesChart';
+// Donas
+import DonutSalesChart from './components/DonutSalesChart';
+import DonutCategoryChart from './components/DonutCategoryChart';
+import DonutSalesByCategory from './components/DonutSalesByCategory';
+import DonutStockByCategory from './components/DonutStockByCategory';
 
 const breadcrumbs: BreadcrumbItem[] = [
   {
@@ -87,7 +92,7 @@ export default function Dashboard() {
         <div>
           <div >
             <h1 className='text-center p-7'>Filtros Avanzados de Precio</h1>
-            {/*ESTADISTICAS*/}
+            {/*ESTADÍSTICAS*/}
             <div className='grid gap-4 mb-5 ' style={{gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))"}} >
               <div className='p-4 border border-solid rounded-3xl' style={{border: "1px solid #ccc" }}>
                 <strong> Total productos</strong>
@@ -111,6 +116,33 @@ export default function Dashboard() {
                 </>
               )}
             </div>
+            <div className=''>
+              
+              <h2>Resumen de Ventas</h2>
+              <div className='flex flex-wrap gap-4 justify-around' >
+                <DonutSalesChart products={filteredProducts} />
+                <LineSalesChart products={filteredProducts} />
+              </div>
+              <br />
+              <div className='flex flex-wrap gap-4 justify-around' >
+                <section className="mt-8">
+                  <h3>Distribución por categoría</h3>
+                  <DonutCategoryChart products={filteredProducts} />
+                </section>
+                <div>
+                  <h3>Ventas por categoría (S/)</h3>
+                  <DonutSalesByCategory products={filteredProducts} />
+                </div>
+              </div>
+              <br />
+              <div className='flex flex-wrap gap-4 justify-around' >
+                <div>
+                  <DonutStockByCategory products={filteredProducts} />
+                </div>
+              </div>
+            </div>
+            <br />
+            
             {/*FILTROS */}
             <div className='mb-5' >
               <div className='flex gap-2 items-center justify-center m-3'> 
@@ -125,9 +157,9 @@ export default function Dashboard() {
             </div>
 
             <ProductList items={filteredProducts} />
-            <h2> Estadisticas de precios(barras)</h2>
-
-            <div className='flex items-end gap-2.5 p-2.5 h-52 border border-solid border-gray-200 m-5' >
+            <h2 className='text-center'> Estadísticas de precios(barras)</h2>
+            <br></br>
+            <div className='flex items-end gap-2.5 p-2.5 border border-solid border-gray-200 m-5' >
               {filteredProducts.map(product => (
                 <div key={product.id} style={{ textAlign: "center" }}>
                   {/*PRECIO */}

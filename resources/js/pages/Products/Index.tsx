@@ -35,6 +35,9 @@ interface Product{
     id: number;
     nombre: string;
     precio: number;
+    sales: number;
+    stock: number;
+    categorias: string;
     descripcion: string;
 }
 
@@ -82,7 +85,10 @@ export default function Index() {
                         <TableHead className="w-[100px]">ID</TableHead>
                         <TableHead>Nombre</TableHead>
                         <TableHead>Precio</TableHead>
-                        <TableHead className="text-left">Descripcion</TableHead>
+                        <TableHead className="text-left">Stock</TableHead>
+                        <TableHead className="text-left">Ventas</TableHead>
+                        <TableHead className="text-left">Categorías</TableHead>
+                        <TableHead className="text-left">Descripción</TableHead>
                         <TableHead className="text-center">Acciones</TableHead>
                         </TableRow>
                     </TableHeader>
@@ -91,7 +97,10 @@ export default function Index() {
                         <TableRow>
                             <TableCell className="font-medium">{product.id}</TableCell>
                             <TableCell>{product.nombre}</TableCell>
-                            <TableCell>{product.precio}</TableCell> 
+                            <TableCell>{product.precio}</TableCell>
+                            <TableCell>{product.stock}</TableCell>
+                            <TableCell>{product.sales}</TableCell>
+                            <TableCell>{product.categorias}</TableCell>
                             <TableCell>{product.descripcion}</TableCell>
                             <TableCell className='flex gap-3.5 justify-center items-center'>
                                 <Link href={route('products.edit', product.id)}><Button className='bg-slate-600 hover:bg-slate-700'> <PencilLine/> </Button></Link>

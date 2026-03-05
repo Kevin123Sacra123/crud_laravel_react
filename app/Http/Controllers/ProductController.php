@@ -29,6 +29,9 @@ class ProductController extends Controller
         $request->validate([
             'nombre' => 'required|string|max:255',
             'precio' => 'required|numeric',
+            'categorias' => 'nullable|string|max:255',
+            'sales' => 'nullable|integer',
+            'stock' => 'nullable|integer',
             'descripcion' => 'nullable|string',
         ]);
 
@@ -49,11 +52,17 @@ class ProductController extends Controller
         $request->validate([
             'nombre' => 'required|string|max:255',
             'precio' => 'required|numeric',
+            'categorias' => 'nullable|string',
+            'sales' => 'nullable|integer',
+            'stock' => 'nullable|integer',
             'descripcion' => 'nullable|string',
         ]);
         $product->update([
             'nombre' => $request->input('nombre'),
             'precio' => $request->input('precio'),
+            'categorias' => $request->input('categorias'),
+            'sales' => $request->input('sales'),
+            'stock' => $request->input('stock'),
             'descripcion' => $request->input('descripcion'),
         ]);
         return redirect()->route('products.index')->with('message', 'Producto actualizado exitosamente.');

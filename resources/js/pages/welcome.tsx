@@ -31,13 +31,13 @@ export default function Welcome({
                 <header className="mb-6 w-full max-w-[335px] text-sm not-has-[nav]:hidden lg:max-w-4xl">
                 </header>
                 <div>
-                    <Card size="sm" className="mx-auto w-full max-w-sm">
+                <Card size="sm" className="mx-auto w-full max-w-sm">
                     <CardHeader>
-                    <CardTitle className='text-center'>CRUD laravel - React</CardTitle>
-                    <CardDescription>
-                    pequeño experimento con laravel, react y shad ui
-                    </CardDescription>
-                </CardHeader>
+                        <CardTitle className='text-center'>CRUD laravel - React</CardTitle>
+                        <CardDescription>
+                            pequeño experimento con laravel, react y shad ui
+                        </CardDescription>          
+                    </CardHeader>
                     <CardContent className='flex items-center justify-center'>
                             <nav className="flex items-center justify-end gap-4">
                             {auth.user ? (

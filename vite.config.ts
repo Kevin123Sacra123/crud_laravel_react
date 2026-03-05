@@ -25,7 +25,5 @@ export default defineConfig({
     esbuild: {
         jsx: 'automatic',
     },
-    server: {
-        https: true,
-    },
+
 });

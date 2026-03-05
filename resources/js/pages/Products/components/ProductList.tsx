@@ -12,6 +12,7 @@ interface Product{
     id: number;
     nombre: string;
     precio: number;
+    categorias: string;
     descripcion: string;
 }
 
@@ -26,11 +27,12 @@ export default function ProductList({ items}){
     return (
       <div>
         <Table>
-          <TableCaption>Lista de Productos</TableCaption>
+          <TableCaption></TableCaption>
           <TableHeader>
           <TableRow>
             <TableHead>ID</TableHead>
             <TableHead>Nombre</TableHead>
+            <TableHead>Categorías</TableHead>
             <TableHead>Precio</TableHead>
           </TableRow>
           </TableHeader>
@@ -39,6 +41,7 @@ export default function ProductList({ items}){
             <TableRow key={product.id}>
                 <TableCell>{product.id}</TableCell>
                 <TableCell> {product.nombre}</TableCell>
+                <TableCell> {product.categorias}</TableCell>
                 <TableCell>S/  {product.precio}</TableCell>
             </TableRow>
             ))}
