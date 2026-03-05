@@ -21,6 +21,46 @@ class ProductController extends Controller
         return Inertia::render('Products/Dashboard', compact('products'));
     }
 
+public function export()
+    {
+        $products = Product::all();
+        $fileName = 'lista_productos_' . date('Ymd') . '.csv';
+
+        $headers = [
+            "Content-type"        => "text/csv; charset=utf-8",
+            "Content-Disposition" => "attachment; filename=$fileName",
+            "Pragma"              => "no-cache",
+            "Cache-Control"       => "must-revalidate, post-check=0, pre-check=0",
+            "Expires"             => "0"
+        ];
+
+        $callback = function() use($products) {
+            $file = fopen('php://output', 'w');
+            
+            // BOM para que Excel en Windows reconozca tildes y eñes
+            fprintf($file, chr(0xEF).chr(0xBB).chr(0xBF));
+
+            // Encabezados de la tabla
+            fputcsv($file, ['ID', 'Nombre', 'Precio', 'Descripción', 'Ventas', 'Categoría', 'Stock'], ";");
+
+            foreach ($products as $product) {
+                fputcsv($file, [
+                    $product->id, 
+                    $product->nombre, 
+                    $product->precio, 
+                    $product->descripcion,
+                    $product->sales,
+                    $product->categorias,
+                    $product->stock
+                ],";");
+            }
+            fclose($file);
+        };
+
+        return response()->stream($callback, 200, $headers);
+    }
+
+
     public function create(){
         return Inertia::render('Products/Create');
     }
